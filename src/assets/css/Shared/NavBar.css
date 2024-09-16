@@ -1,0 +1,195 @@
+:root {
+  --primary-color: #007931;
+  --secondary-color: #ffffff;
+  --button-hover-color: #006f2b;
+  --dropdown-bg-color: #007931;
+}
+
+.avatar, .messages_action, .notify_action{
+  height: 55px;
+  width: 55px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+.search-dropdown i {
+  font-size: 12px; /* Điều chỉnh kích thước icon */
+}
+.search-dropdown, .dropdown-menu {
+  position: absolute !important;
+}
+.input-group,
+.form-control:focus {
+  z-index: 0;
+}
+.searchBar {
+  height: 40px !important;
+  border-radius: 60px 0px 0px 60px !important;
+  z-index: 1;
+}
+
+.search-dropdown {
+  z-index: 1;
+  position: relative;
+  width: 160px !important;
+  left: 0;
+  top: 0;
+  border-radius: 43px;
+  height: 40px !important;
+  transform: translateX(-30px);
+  background-color: #D9D9D9;
+}
+.search-dropdown:hover {
+  background-color: #D9D9D9;
+}
+.search-dropdown:focus {
+  background-color: #D9D9D9;
+}
+
+.btn-login {
+  width: 144px;
+  height: 35px;
+  text-wrap: nowrap;
+  padding: 2px;
+  border-radius: 30px;
+  font-size: 16px !important;
+  color: var(--secondary-color);
+  background: var(--primary-color);
+}
+
+.btn-register {
+  width: 125px;
+  height: 35px;
+  text-wrap: nowrap;
+  padding: 2px;
+  border-radius: 30px;
+  font-size: 16px !important;
+  border: 0px;
+}
+
+.btn-login:hover {
+  color: var(--secondary-color);
+  background: var(--button-hover-color);
+}
+
+.drop-title {
+  font-size: 12px !important;
+}
+
+.drop-sub {
+  font-size: 10px !important;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    height: 92px;
+  }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+    margin-right: 16px;
+  }
+
+  .nav-link {
+    font-size: 18px;
+  }
+
+  .searchBar {
+    width: 240px !important;
+    padding-right: 40px;
+    font-size: 12px !important;
+    height: 40px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar {
+    height: 82px;
+  }
+
+  .logo {
+    width: 54px;
+    height: 54px;
+    margin-right: 16px;
+  }
+
+  .searchBar {
+    width: 200px !important;
+    padding-right: 40px;
+    font-size: 12px !important;
+    height: 40px !important;
+  }
+
+  .search-dropdown {
+    z-index: 1;
+    position: relative;
+    width: 150px !important;
+    left: 0;
+    top: 0;
+    border-radius: 43px;
+    height: 32px !important;
+    transform: translateX(-30px);
+  }
+
+  .searchBar {
+    height: 32px !important;
+    border-radius: 5px !important;
+    border-start-start-radius: 0px !important;
+    border-end-start-radius: 0px !important;
+  }
+
+  .search-dropdown-mb {
+    border-radius: 5px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  .search-dropdown-mb {
+    font-size: 12px;
+    width: 150px !important;
+    background: var(--dropdown-bg-color) !important;
+  }
+}
+
+.text-dropdown {
+  font-size: 12px !important;
+}
+
+.nav-link.active {
+  color: var(--primary-color) !important; /* Màu xanh cho mục đã chọn */
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    height: 72px;
+  }
+
+  .logo {
+    width: 44px;
+    height: 44px;
+    margin-right: 16px;
+  }
+
+  .searchBar {
+    height: 32px !important;
+    border-radius: 5px !important;
+    border-start-start-radius: 0px !important;
+    border-end-start-radius: 0px !important;
+  }
+
+  .search-dropdown-mb {
+    border-radius: 5px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+
+  .search-dropdown-mb {
+    font-size: 12px;
+    width: 150px !important;
+    background: var(--dropdown-bg-color) !important;
+  }
+  
+}

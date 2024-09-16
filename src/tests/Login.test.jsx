@@ -6,11 +6,9 @@ import { toast } from 'react-toastify';
 import Login from '../components/Auth/Login'; 
 import '@testing-library/jest-dom'; 
 
-// Mock store and initial state
 const mockStore = configureStore([]);
 let store;
 
-// Mock react-toastify
 vi.mock('react-toastify', () => ({
   toast: {
     success: vi.fn(),

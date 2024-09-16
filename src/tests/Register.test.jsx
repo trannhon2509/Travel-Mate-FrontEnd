@@ -2,11 +2,10 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { toast } from 'react-toastify'; // Mock toastify
-import Register from '../components/Auth/Register'; // Đường dẫn chính xác đến component Register
+import { toast } from 'react-toastify'; 
+import Register from '../components/Auth/Register'; 
 import '@testing-library/jest-dom';
 
-// Mock store and initial state
 const mockStore = configureStore([]);
 let store;
 
@@ -28,7 +27,6 @@ describe('Register Component', () => {
       </Provider>
     );
 
-    // Kiểm tra xem các phần tử cần thiết có hiển thị không
     expect(screen.getByPlaceholderText('Username')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Mật khẩu')).toBeInTheDocument();
@@ -47,7 +45,6 @@ describe('Register Component', () => {
       </Provider>
     );
 
-    // Điền vào các trường nhập liệu
     fireEvent.change(screen.getByPlaceholderText('Username'), {
       target: { value: 'testuser' },
     });
@@ -58,13 +55,11 @@ describe('Register Component', () => {
       target: { value: 'password123' },
     });
     fireEvent.change(screen.getByPlaceholderText('Xác nhận mật khẩu'), {
-      target: { value: 'password456' }, // Mật khẩu xác nhận không khớp
+      target: { value: 'password456' }, 
     });
 
-    // Nhấn nút Tiếp tục
     fireEvent.click(screen.getByText('Tiếp tục'));
 
-    // Kiểm tra xem thông báo lỗi có hiển thị không
     await waitFor(() => {
       expect(screen.getByText('Mật khẩu và xác nhận mật khẩu không khớp')).toBeInTheDocument();
     });
@@ -73,7 +68,6 @@ describe('Register Component', () => {
   });
 
   test('successful registration and closing modal', async () => {
-    // Mock fetch để giả lập trường hợp đăng ký thành công
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
@@ -89,7 +83,6 @@ describe('Register Component', () => {
       </Provider>
     );
 
-    // Điền vào các trường nhập liệu
     fireEvent.change(screen.getByPlaceholderText('Username'), {
       target: { value: 'testuser' },
     });
@@ -103,10 +96,8 @@ describe('Register Component', () => {
       target: { value: 'password123' },
     });
 
-    // Nhấn nút Tiếp tục
     fireEvent.click(screen.getByText('Tiếp tục'));
 
-    // Kiểm tra xem modal có được đóng và toast thành công có hiển thị không
     await waitFor(() => {
       expect(handleClose).toHaveBeenCalled();
       expect(toast.success).toHaveBeenCalledWith('Đăng ký thành công!');

@@ -1,10 +1,10 @@
-import { describe, test, expect, vi, beforeEach } from 'vitest'; // Import vitest
+import { describe, test, expect, vi, beforeEach } from 'vitest'; 
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { toast } from 'react-toastify'; // Mock toastify
-import Login from '../components/Auth/Login'; // Đường dẫn chính xác đến component Login
-import '@testing-library/jest-dom'; // Import jest-dom
+import { toast } from 'react-toastify'; 
+import Login from '../components/Auth/Login'; 
+import '@testing-library/jest-dom'; 
 
 // Mock store and initial state
 const mockStore = configureStore([]);
@@ -29,7 +29,6 @@ describe('Login Component', () => {
       </Provider>
     );
 
-    // Kiểm tra xem các phần tử cần thiết có hiển thị không
     expect(screen.getByPlaceholderText('Username')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
     expect(screen.getByText('Tiếp tục')).toBeInTheDocument();
@@ -38,7 +37,6 @@ describe('Login Component', () => {
   });
 
   test('shows error message on failed login attempt', async () => {
-    // Mock fetch để giả lập trường hợp đăng nhập thất bại
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: false,
@@ -54,7 +52,6 @@ describe('Login Component', () => {
       </Provider>
     );
 
-    // Điền vào các trường nhập liệu
     fireEvent.change(screen.getByPlaceholderText('Username'), {
       target: { value: 'wronguser' },
     });
@@ -62,10 +59,8 @@ describe('Login Component', () => {
       target: { value: 'wrongpass' },
     });
 
-    // Nhấn nút Tiếp tục
     fireEvent.click(screen.getByText('Tiếp tục'));
 
-    // Đợi đến khi error message xuất hiện
     await waitFor(() => {
       expect(screen.getByText('Sai tài khoản hoặc mật khẩu.')).toBeInTheDocument();
     });
@@ -74,7 +69,6 @@ describe('Login Component', () => {
   });
 
   test('successful login and closing modal', async () => {
-    // Mock fetch để giả lập trường hợp đăng nhập thành công
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
@@ -90,7 +84,6 @@ describe('Login Component', () => {
       </Provider>
     );
 
-    // Điền vào các trường nhập liệu
     fireEvent.change(screen.getByPlaceholderText('Username'), {
       target: { value: 'testuser' },
     });
@@ -98,10 +91,8 @@ describe('Login Component', () => {
       target: { value: 'testpass' },
     });
 
-    // Nhấn nút Tiếp tục
     fireEvent.click(screen.getByText('Tiếp tục'));
 
-    // Đợi đến khi modal được đóng và toast thành công xuất hiện
     await waitFor(() => {
       expect(handleClose).toHaveBeenCalled();
       expect(toast.success).toHaveBeenCalledWith('Đăng nhập thành công!', {

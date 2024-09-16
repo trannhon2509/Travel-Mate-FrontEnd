@@ -7,7 +7,6 @@ import { combineReducers } from 'redux';
 import { Couter } from '../components/Shared/Couter';
 import couterReducer from '../redux/reducers/couterReducer';
 
-// Tạo store với reducer
 const store = createStore(combineReducers({ couter: couterReducer }));
 
 describe('Couter component', () => {
@@ -33,14 +32,11 @@ describe('Couter component', () => {
     const increaseButton = screen.getByText(/Increase/);
     const decreaseButton = screen.getByText(/Decrease/);
 
-    // Kiểm tra giá trị count ban đầu
     expect(screen.getByText(/Count: 0/)).toBeInTheDocument();
 
-    // Nhấn nút Increase
     fireEvent.click(increaseButton);
     expect(screen.getByText(/Count: 1/)).toBeInTheDocument();
 
-    // Nhấn nút Decrease
     fireEvent.click(decreaseButton);
     expect(screen.getByText(/Count: 0/)).toBeInTheDocument();
   });
